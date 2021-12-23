@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Self-supervised-image-representation-learning</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Brought to you by Mike</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Overview</a></li>
+							<li>
+								<a href="#">Experimental results</a>
+								<ul>
+									<li><a href="hard-dataset.html">hard-dataset-experiment</a></li>
+                                    <li><a href="offline-experiment.html">offline-experiment</a></li>
+									<li><a href="online-experiment.html">online-experiment</a></li>
+<!--									<li><a href="no-sidebar.html">No Sidebar</a></li>-->
+<!--
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option 1</a></li>
+											<li><a href="#">Option 2</a></li>
+											<li><a href="#">Option 3</a></li>
+											<li><a href="#">Option 4</a></li>
+										</ul>
+									</li>
+-->
+								</ul>
+							</li>
+							<li><a href="https://drive.google.com/file/d/1W3pPK0zsPHJEYkBIoqtZ-LiCXwGLJ-Ab/view?usp=sharing">Chinese version paper</a></li>
+<!--							<li><a href="#" class="button primary">Sign Up</a></li>-->
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2><b>Image representation learning</b></h2>
+							<p>AI vision solution towards solving critical challenges in E-commerce.
+                            </p>
+                            <p>Key words: <b>self-supervised learning</b>, <b>content understanding</b>, <b>image augmentation</b></p>
+						</header>
+						<span class="image"><img src="images/shopping_car.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- One -->
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="images/shopping.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="col-4 col-12-medium">
+									<header>
+										<h2>Background</h2>
+										<p>SEA E-commerce is growing rapidly in recently year. Top players leverage Data Science techniques to increase their competitive advantage through massive amounts of data including <b>images</b>, <b>texts</b>, and <b>user behaviours</b>, etc. </p>
+									</header>
+								</div>
+								<div class="col-4 col-12-medium">
+									<p>In this blog, we focus on <b>image data</b>. The application is targeted towards 3 types of downsteam tasks: same-item-price comparison, gap-item-supplement, opportunity-item-exploration. All of these applications relies heavily on the quality of a single function: <b>multi-modal item matching</b>.</p>
+								</div>
+								<div class="col-4 col-12-medium">
+									<p>Items in E-commerce are associated with information of many modalities where <b>visual information</b> plays a vital role in the accuracy of matching algorithm. We are going to costomize a self-supervised image representation network that is capable to train on massive volumne of images while building robust resistance toward common E-commerce disturbance like <b>orientation shift</b>, <b>multi-object</b>, and <b>watermarks</b>.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="images/SiameseNet.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Baseline Model</h2>
+							<p>Good old Siamese Network</p>
+						</header>
+						<p>The most straight forward solution being bulding a <b>Siamese Network</b> with CNN-encoder training schema with <b>contrastive loss </b>as shown on the left. The drawbacks are 3-folds:</p>
+                        <p>1. Supervised training. Very expensive to label large dataset.<br>2. Hard-negative mining. Negative samples are mostly too easy to learn anything meaningful.
+                        <br>3. Model to prone to many E-commerce disturbances. Shown in below section</p>
+<!--
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+-->
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/disturbance.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Top-4 Scenarios the baseline model is hurting from</h2>
+							<p>1. Different sellers might take photos from slightly different <b>perspectives</b>
+                            <br>2. It's common to find <b>shop logos</b> on item images
+                            <br>3. Items comes with <b>various colours</b> in E-commerce
+                            <br>4. Some sellers might list <b>multiple items</b> in one image</p>
+						</header>
+						<p>There are other long-tail disturbance hurting the baseline model. Above are the most common cases. Our new model should be trained with a robust strategy to combat each of them and handle new ones if found.</p>
+<!--
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+-->
+					</div>
+					<a href="#Three-2" class="goto-next scrolly">Next</a>
+				</section>
+            <!-- Three-2 -->
+				<section id="Three-2" class="spotlight style2 right">
+					<span class="image fit main"><img src="images/MoCo.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Self-supervised vision model</h2>
+							<p>Model architecture is based on MoCo from Facebook</p>
+						</header>
+						<p>Proposed by He Kaiming, MoCo adopts a momentum encoder and a dynamic negative sample dictionary to perform image representation learning on large scale dataset while minimize computational overhead as compared to SimCLR.</p>
+                        <p>1. We train the vision model on 6M images sampled evenly from SG/VN/MY/PH/TH/ID
+                        <br>2. Training conducted with 8 V100 GPUs over a week's time with learning rate anealing
+                        <br>3. Customized <b>image augmentaion</b> to target our weak cases as shown below</p>
+<!--
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+-->
+					</div>
+					<a href="#Three-3" class="goto-next scrolly">Next</a>
+				</section>
+            <!-- Three-3 -->
+				<section id="Three-3" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/Augmentations.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Augmentation for<br>E-commerce</h2>
+							<p>1. Allow images to be transformed to different <b>perspectives</b>
+                            <br>2. Firstly remove all <b>watermarks</b> from images. Then, we allow <b>30%</b> chance to randomly add <b>watermarks</b> from scrapped pool during training
+                            <br>3. Increase <b>saturation, intensity, brightness</b> variation
+                            <br>4. <b>10%</b> chance to construct a <b>multiple items image</b> randomly selection 1~6 combinations</p>
+						</header>
+						<p>The idea is to mimic the common disturbance as seen from our dataset and apply them to <b>image_aug_1</b> and <b>image_aug_2</b> helping the vision model to build up resistance and robustness</p>
+<!--
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+-->
+					</div>
+					<a href="#Three-4" class="goto-next scrolly">Next</a>
+				</section>
+            <!-- Three-4 -->
+				<section id="Three-4" class="spotlight style2 right">
+					<span class="image fit main"><img src="images/final_aug.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Experimental Results</h2>
+							<p>The right picture demonstrate effectiveness of our new augmentation schema</p>
+						</header>
+						<p>The new model was benchmarked in 3 experiments with different difficulty level</p>
+                        <p>1. Hard dataset: Taobao v.s. SEA data. Huge discrepancies in data distribution, image style and watermark habbits.
+                        <br>2. Local SEA dataset: off-line 100k experiment
+                        <br>3. Local SEA dataset: on-line full scale data
+                        </p>
+						<ul class="actions">
+							<li><a href="hard-dataset.html" class="button">hard-dataset-experiment</a></li>
+						</ul>
+                        <ul class="actions">
+							<li><a href="offline-experiment.html" class="button">offline-experiment</a></li>
+						</ul>
+                        <ul class="actions">
+							<li><a href="online-experiment.html" class="button">online-experiment</a></li>
+						</ul>
+					</div>
+					<a href="#Three-5" class="goto-next scrolly">Next</a>
+				</section>
+            <!-- Three-5 -->
+				<section id="Three-5" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/comparison.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Addtional recall from<br>new vision model</h2>
+							<p>1. Watermark</b>
+                            <br>2. Multi-object
+                            <br>3. Orientation shift
+                            <br>4. Color change</p>
+						</header>
+						<p>Example are sampled from actual production pipeline where our new MoCo shows better robustness in areas we targeted to improve</p>
+<!--
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+-->
+					</div>
+					<a href="#Four" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- Four -->
+				<section id="four" class="wrapper style1 special fade-up">
+					<div class="container">
+						<header class="major">
+							<h2>Thanks for watching till the end of the post</h2>
+							<p>Hope that the content is ineresting and could inspire new ideas. If you have any questions or suggestions, feel free to reach me with the contacts provided below.
+                            <br> Hope you have a great day ahead！ ^ ^</p>
+						</header>
+					</div>
+				</section>
+
+<!--
+			 Five 
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+						<header>
+							<h2>Magna faucibus lorem diam</h2>
+							<p>Ante metus praesent faucibus ante integer id accumsan eleifend</p>
+						</header>
+						<form method="post" action="#" class="cta">
+							<div class="row gtr-uniform gtr-50">
+								<div class="col-8 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
+								<div class="col-4 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
+							</div>
+						</form>
+					</div>
+				</section>
+-->
+
+                <!--Footer -->
+				<footer id="footer">
+					<ul class="icons">
+<!--
+						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+-->
+						<li><a href="https://www.linkedin.com/in/mike-xiaoguo-li-739708171/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+<!--						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>-->
+						<li><a href="https://github.com/Sylar257" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="lixiaoguo001@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; All rights reserved.</li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

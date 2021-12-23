@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>offline-experiment</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Brought to you by Mike</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Offline experiment</h2>
+							<p>This a <b>1k</b> dataset sampled randomly from actual project data. All images are from SEA local sellers so that the difficulty level is lower than the hard-dataset. The objective is to test out the difference in the 3 following models to the best extent: baseline Siamese network, Vanilla MoCo, Enhance MoCo(our version)
+                            </p>
+						</header>
+
+						<!-- Content -->
+							<section id="content">
+								<a href="#" class="image fit"><img src="images/offline-experiment.jpg" alt="" /></a>
+								<h3>Siamese v.s. Vanilla MoCo v.s. Enhanced MoCo</h3>
+								<p>There are 2 metrics that we care about the most for the actual downstream applications. The total amount of identical items that we could capture through vision: reflected by <b>Coverage</b>. Among these recalled items, how many of them are true positive matches: reflected by <b>Precision</b>.</p>
+								<ul>
+									<li>Both MoCo models performs better baseline in both <b>coverage</b> and <b>precision</b></li>
+									<li>Enhanced MoCo consistently performance best for 2 reasons: fine-tune on our dataset and better robustness to disturbance </li>
+                                    <li>From this point onwards, we only consider <b>Enhanced MoCo</b> for official launching</li>
+								</ul>
+							</section>
+
+					</div>
+				</div>
+
+			<!--Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/mike-xiaoguo-li-739708171/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Sylar257" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="lixiaoguo001@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; All rights reserved.</li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
